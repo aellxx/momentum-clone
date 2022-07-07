@@ -5,6 +5,13 @@ const toDoInput = toDoForm.querySelector("input");
 // grab the list
 const toDoList = document.getElementById("todo-list");
 
+// store all to-dos
+const toDos = [];
+
+function saveToDos() {
+    localStorage.setItem("toDos", toDos);
+}
+
 function deleteToDo(event) {
     // get the entire li element containing the button
     const li = event.target.parentElement;
@@ -40,10 +47,13 @@ function handleToDoSubmit(event) {
     event.preventDefault();
     // save value 
     const newToDo = toDoInput.value;
+    toDos.push(newToDo);
     // empty the input space
     toDoInput.value = "";
     // paint to-do
     paintToDo(newToDo);
+    // save to local storage
+    saveToDos();
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
