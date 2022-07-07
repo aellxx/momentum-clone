@@ -15,19 +15,21 @@ function saveToDos() {
 }
 
 function deleteToDo(event) {
-    // get the entire li element containing the button
     const li = event.target.parentElement;
-    // delete
+    const deleteId = li.id;
+    // delete html
     li.remove();
+    // delete from database
 }
 
-function paintToDo(newToDo) {
+function paintToDo(newToDoObj) {
     // create list
     const li =  document.createElement("li"); 
+    li.id = newToDoObj.id;
 
     // create span & add text
     const span = document.createElement("span"); 
-    span.innerText = newToDo; 
+    span.innerText = newToDoObj.text; 
     // create button & add text
     const button = document.createElement("button");
     button.innerText = "❌";
@@ -47,13 +49,17 @@ function paintToDo(newToDo) {
 function handleToDoSubmit(event) {
     // prevent page refresh
     event.preventDefault();
-    // save value 
+    // save object with user-input value
     const newToDo = toDoInput.value;
-    toDos.push(newToDo);
+    const newToDoObj = {
+        id: Date.now(), 
+        text: newToDo,
+    }
+    toDos.push(newToDoObj);
     // empty the input space
     toDoInput.value = "";
     // paint to-do
-    paintToDo(newToDo);
+    paintToDo(newToDoObj);
     // save to local storage
     saveToDos();
 }
