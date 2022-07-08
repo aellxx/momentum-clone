@@ -16,10 +16,14 @@ function saveToDos() {
 
 function deleteToDo(event) {
     const li = event.target.parentElement;
+    // this is a string
     const deleteId = li.id;
     // delete html
     li.remove();
-    // delete from database
+    // delete from array
+    toDos = toDos.filter((toDoObj) => toDoObj.id != parseInt(deleteId));
+    // save updated array to localStorage
+    saveToDos();
 }
 
 function paintToDo(newToDoObj) {
@@ -43,8 +47,6 @@ function paintToDo(newToDoObj) {
     // add list to toDoList
     toDoList.appendChild(li);
 }
-
-
 
 function handleToDoSubmit(event) {
     // prevent page refresh
