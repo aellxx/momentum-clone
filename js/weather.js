@@ -1,4 +1,4 @@
-const API_KEY = "add api key here";
+const API_KEY = "78f91203b9ea6e5474fcfb2af86c432a";
 
 function onGeoOk(position) {
     // get latitude and longitude from automatic param position
