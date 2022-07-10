@@ -1,7 +1,77 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    min-height: 100%;
+}
+
 .hidden {
     display: none;
 }
 
-.bg-image {
-    width: 100%;
+.wrapper {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    margin: 10px;
 }
+
+.left {
+    flex-grow: 3;
+    border: 1px solid burlywood;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 100%;
+}
+
+.left * {
+    width: 50%;
+    text-align: center;
+    background-color: lightblue;
+}
+
+#quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#quote span:last-child {
+    font-style: italic;
+    font-size: 0.8em;
+    display: block;
+}
+
+
+.right {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid burlywood;
+}
+
+.right #to-do {
+    flex-grow: 3;
+    max-height: 80%;
+    overflow: scroll;
+}
+
+.right #weather {
+    border: 1px solid burlywood;
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+#weather span:last-child {
+    display: block;
+}
+

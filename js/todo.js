@@ -36,7 +36,7 @@ function paintToDo(newToDoObj) {
     span.innerText = newToDoObj.text; 
     // create button & add text
     const button = document.createElement("button");
-    button.innerText = "❌";
+    button.innerText = "X";
 
     // click button -> delete to do
     button.addEventListener("click", deleteToDo);
