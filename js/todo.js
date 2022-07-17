@@ -33,9 +33,11 @@ function paintToDo(newToDoObj) {
 
     // create span & add text
     const span = document.createElement("span"); 
-    span.innerText = newToDoObj.text; 
+    span.innerText = `${newToDoObj.text}  `; 
     // create button & add text
     const button = document.createElement("button");
+    button.classList.add("rounded-input");
+    button.classList.add("box-shadow");
     button.innerText = "X";
 
     // click button -> delete to do
@@ -51,19 +53,24 @@ function paintToDo(newToDoObj) {
 function handleToDoSubmit(event) {
     // prevent page refresh
     event.preventDefault();
-    // save object with user-input value
-    const newToDo = toDoInput.value;
-    const newToDoObj = {
-        id: Date.now(), 
-        text: newToDo,
+    // check user login
+    if (localStorage.getItem("username") === null){
+        alert("Please log in before adding a to-do");
+    } else {
+        // save object with user-input value
+        const newToDo = toDoInput.value;
+        const newToDoObj = {
+            id: Date.now(), 
+            text: newToDo,
+        }
+        toDos.push(newToDoObj);
+        // empty the input space
+        toDoInput.value = "";
+        // paint to-do
+        paintToDo(newToDoObj);
+        // save to local storage
+        saveToDos();
     }
-    toDos.push(newToDoObj);
-    // empty the input space
-    toDoInput.value = "";
-    // paint to-do
-    paintToDo(newToDoObj);
-    // save to local storage
-    saveToDos();
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
